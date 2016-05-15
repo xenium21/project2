@@ -1,0 +1,115 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 40px;
+    font-family: sans-serif;
+}
+.login {
+    height: 20px;
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+.banner {
+    height: 200px;
+    background-color: black;
+    background-repeat: no-repeat;
+    color: white;
+}
+.title {
+    position: absolute;
+    left: 300px;
+    top: 80px;
+    font-size: 60px;
+    font-style: italic;
+}
+.sub {
+    position: absolute;
+    left: 300px;
+    top: 150px;
+    font-size: 20px;
+    font-family: monospace
+}
+.nav_bar {
+    position: absolute;
+    top: 200px;
+    bottom: 100px;
+    min-width: 15%;
+}
+.nav_link {
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+.nav_header {
+    margin: 5px;
+    text-align: right;
+    font-size: 12px;
+    font-style: italic;
+}
+.nav_select {
+    list-style: none;
+    background-color: lightblue;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+.nav_href {
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+}
+.nav_href:hover {
+    background-color: background;
+    color: white;
+}
+.content {
+    position: relative;
+    top: 0;
+    left: 15%;
+    bottom: 40px;
+    width: 75%;
+}
+.content_section {
+    margin: 10px;
+    padding-bottom: 5px;
+}
+.content_title {
+    font-size: 25px;
+    margin: 5px;
+    border-bottom: 1px solid black;
+}
+.content_text {
+    margin: 5px;
+    margin-bottom: 20px;
+}
+.content_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.content_list {
+    list-style: none;
+}
+footer {
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    background-color: lightblue;
+}
+.footer_element {
+    padding: 5px 5px 0px 5px;
+    float: left;
+}
+.footer_info {
+    font-size: 10px;
+}
+#game {
+    padding: 5px;
+    border: 1px solid black;
+}
