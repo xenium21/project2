@@ -46,8 +46,8 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // Mongodb
-//mongoose.connect('mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4');
-var db = Mongoose.createConnection('mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4');
+mongoose.connect('mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4');
+//var db = Mongoose.createConnection('mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
