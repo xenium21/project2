@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 // Passport elements
 app.use(require('express-session')({
-    secret: 'to do what you must you must do',
+    secret: 'test',
     resave: false,
     saveUninitialized: false
 }));
@@ -37,7 +37,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 
 // Passport
 var Account = require('./models/account');
