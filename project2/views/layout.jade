@@ -47,3 +47,7 @@ html
             .footer_element
                 a(href='http://www.w3.org/html/logo/')
                     img(src='https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png', width='88', height='31', alt='HTML5 Powered with CSS3 / Styling, and Semantics', title='HTML5 Powered with CSS3 / Styling, and Semantics')
+        if (error && error.length > 0)
+            br
+            h4.error-msg= error
+            br
