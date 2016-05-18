@@ -7,8 +7,10 @@ html
     body
         .login
             if (!user)
-                a(href="/login") Login
-                a(href="/register") Register
+                p
+                  a(href="/login") Login
+                  | |
+                  a(href="/register") Register
             if (user)
                 p Logged in as #{user.username}
                 a(href="/logout") Logout
