@@ -6,6 +6,9 @@ body {
     margin: 0 0 40px;
     font-family: sans-serif;
 }
+a {
+    text-decoration: none;
+}
 .login {
     top: 0;
     height: 20px;
