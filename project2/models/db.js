@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-var url = 'mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4';
+//var url = 'mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4';
+var url = 'mongodb://localhost/passport_local_mongoose_express4';
 
 mongoose.connect(url);
 
