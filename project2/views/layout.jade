@@ -10,12 +10,14 @@ html
         .login
             if (!user)
                 p
-                  a(href="/login") Login
-                  | |
-                  a(href="/register") Register
+                    a(href="/login") Login
+                    | |
+                    a(href="/register") Register
             if (user)
-                p Logged in as #{user.username}
-                a(href="/logout") Logout
+                p 
+                    Logged in as #{user.username}
+                    | |
+                    a(href="/logout") Logout
         .banner(style='background-image: url("images/banner.png")')
             .title='Quake III World'
             .sub='The Internets #1 fan site'
@@ -31,9 +33,15 @@ html
                 ul.nav_select
                     li.nav_href: a(href='/reactor') Reactor
                     li.nav_href: a(href='/howto') Howto
+                    li.nav_href: a(href='/hiscore') Hiscores
+                    if (user)
+                        li.nav_href: a(href='/elite') Elite corner
                 h6.nav_header='Misc'
                 ul.nav_select
-                    li.nav_href: a(href='about') About
+                    li.nav_href: a(href='/about') About
+                    li.nav_href: a(href='/design') Design
+                    li.nav_href: a(href='/valid') Validation
+                    li.nav_href: a(href='/feedback') Feedback
         .content
             .content_section
                 block content

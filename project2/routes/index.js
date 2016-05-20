@@ -28,13 +28,27 @@ router.get( '/reactor', sitePages.reactor );
 /* How to play the game */
 router.get( '/howto', sitePages.howto );
 
+/* Hi-score list */
+router.get( '/hiscore', sitePages.hiscore );
+
+/* Dynamic user content */
+router.get( '/elite', sitePages.elite );
+
 /* About page */
 router.get( '/about', sitePages.about );
 
+/* Design */
+router.get( '/design', sitePages.design );
+
+/* Validation */
+router.get( '/valid', sitePages.valid );
+
+/* Feedback */
+router.get( '/feedback', sitePages.feedback );
 
 // Account handler
 router.get('/register', function(req, res) {
-    res.render('register', { });
+    res.render('register', { title: 'Registration' });
 });
 
 router.post('/register', function(req, res, next) {
@@ -55,7 +69,7 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
+    res.render('login', { title: 'Login', user : req.user });
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
