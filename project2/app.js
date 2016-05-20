@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-var asser = require('assert');
+var assert = require('assert');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
