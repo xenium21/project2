@@ -9,15 +9,12 @@ html
     body
         .login
             if (!user)
-                p
-                    a(href="/login") Login
-                    | |
-                    a(href="/register") Register
+                a(href="/login") Login
+                = " | "
+                a(href="/register") Register
             if (user)
-                p 
-                    Logged in as #{user.username}
-                    | |
-                    a(href="/logout") Logout
+                = "Logged in as: " + user.username
+                a(href="/logout") Logout
         .banner(style='background-image: url("images/banner.png")')
             .title='Quake III World'
             .sub='The Internets #1 fan site'
