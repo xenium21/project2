@@ -11,9 +11,9 @@ html
             if (!user)
                 a(href="/login") Login
                 = " | "
-                a(href="/register") Register + " | "
+                a(href="/register") Register
             if (user)
-                = "Logged in as: " + user.username
+                = "Logged in as: " + user.username + " | "
                 a(href="/logout") Logout
         .banner(style='background-image: url("images/banner.png")')
             .title='Quake III World'
