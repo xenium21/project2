@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var mongoose = require('mongoose');
-var assert = require('assert');
+//var mongoose = require('mongoose');
+//var assert = require('assert');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
@@ -38,23 +38,16 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-//app.use('/users', users);
+app.use('/users', users);
+
+// Mongodb
+var mongo = require('./models/db');
 
 // Passport
 var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
-
-// Mongodb
-var url = 'mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4';
-mongoose.connect(url, function(err, db)
-  {
-    assert.equal(null, err);
-    console.log("Connected to database");
-    db.close();
-  });
-//var db = Mongoose.createConnection('mongodb://bitnami:zP{)SE2yxiz&@localhost/passport_local_mongoose_express4');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
