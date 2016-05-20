@@ -8,3 +8,11 @@ block content
 				| This site is dedicated to the fast paced shooter Quake III by id softare.
 			p
 				| Read about the game itself or visit the game "Reaction" in the sidebar to test your reflexes.
+			if (!user)
+                p
+                  a(href="/login") Login
+                  | |
+                  a(href="/register") Register
+            if (user)
+                p Logged in as #{user.username}
+                a(href="/logout") Logout

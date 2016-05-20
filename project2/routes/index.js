@@ -9,8 +9,8 @@ var router = express.Router();
 var sitePages = require('../routes/pages');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home' });
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Home', user: req.user });
 });
 
 /* About the theme */
