@@ -31,12 +31,18 @@ router.get( '/reactor', sitePages.reactor );
 router.post( '/reactor', function(req, res) {
     console.log("POST score");
     // Insert into database
-    db.scoreDb.insert({
+    var score = new Scores({
         "username": req.body.name,
         "difficulty": red.body.difficulty,
         "score": Number(req.body.score)
     }, function(err) {
         if(err) console.error("Insertion failed", err);
+    });
+    score.save(function(err) {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/hiscore');
     });
 });
 
