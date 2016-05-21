@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // Login Database
-var score = 'mongodb://localhost/passport_local_mongoose_express4';
+var score = 'mongodb://localhost/scores';
 
 //mongoose.connect(login);
 module.exports = scoreDb = mongoose.createConnection(score);
