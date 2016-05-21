@@ -22,23 +22,23 @@ html
             .nav_link
                 h6.nav_header='Home'
                 ul.nav_select
-                    li.nav_href: a(href='/') Home
-                    li.nav_href: a(href='/q3') Quake III
-                    li.nav_href: a(href='/jsgl') JSGL
-                    li.nav_href: a(href='/html') HTML5
+                    li: a(href='/').nav_href Home
+                    li: a(href='/q3').nav_href Quake III
+                    li: a(href='/jsgl').nav_href JSGL
+                    li: a(href='/html').nav_href HTML5
                 h6.nav_header='Game'
                 ul.nav_select
-                    li.nav_href: a(href='/reactor') Reactor
-                    li.nav_href: a(href='/howto') Howto
-                    li.nav_href: a(href='/hiscore') Hiscores
+                    li: a(href='/reactor').nav_href Reactor
+                    li: a(href='/howto').nav_href Howto
+                    li: a(href='/hiscore').nav_href Hiscores
                     if (user)
-                        li.nav_href: a(href='/elite') Elite corner
+                        li: a(href='/elite').nav_href Elite corner
                 h6.nav_header='Misc'
                 ul.nav_select
-                    li.nav_href: a(href='/about') About
-                    li.nav_href: a(href='/design') Design
-                    li.nav_href: a(href='/valid') Validation
-                    li.nav_href: a(href='/feedback') Feedback
+                    li: a(href='/about').nav_href About
+                    li: a(href='/design').nav_href Design
+                    li: a(href='/valid').nav_href Validation
+                    li: a(href='/feedback').nav_href Feedback
         .content
             .content_section
                 block content
