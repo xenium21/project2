@@ -42,7 +42,10 @@ router.post( '/reactor', function(req, res) {
         if (err) {
             return next(err);
         }
-        res.redirect('/hiscore');
+        else
+        {
+            console.log("Inserted");
+        }
     });
 });
 
