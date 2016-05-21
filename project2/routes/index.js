@@ -6,7 +6,7 @@ var Account = require('../models/account');
 var Scores = require('../models/scores');
 
 var router = express.Router();
-
+var cors = require('cors');
 var sitePages = require('../routes/pages');
 
 /* GET home page. */
@@ -24,9 +24,9 @@ router.get( '/jsgl', sitePages.jsgl );
 router.get( '/html', sitePages.html );
 
 /* The JS game */
-router.get( '/reactor', sitePages.reactor );
+router.get( '/reactor', cors(), sitePages.reactor );
 
-router.post( '/reactor', function(req, res) {
+router.post( '/reactor', cors(), function(req, res) {
     console.log("POST score");
     // Insert into database
     var name = req.body.name;
