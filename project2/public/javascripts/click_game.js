@@ -122,7 +122,6 @@ function runMenuSubmit()
 				},
 				success: function(res, data) {
             		console.log('Score posted', data);
-            		res.redirect('/hiscore');
 		        },
 		        error: function(xhr, msg) {
 		            console.error('AJAX error', xhr.status, msg);

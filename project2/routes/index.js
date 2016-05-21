@@ -3,6 +3,7 @@ var express = require('express');
 // Login info.
 var passport = require('passport');
 var Account = require('../models/account');
+var Scores = require('../models/scores');
 
 var router = express.Router();
 
@@ -27,9 +28,15 @@ router.get( '/reactor', sitePages.reactor );
 
 router.post( '/reactor', function(req, res) {
     console.log("POST score");
-    var name = req.body.name;
-    var score = Number(req.body.score);
-    console.log( name + " " + score );
+
+    // Insert into database
+    Scores.insert({
+        "name": req.body.name,
+        "difficulty": red.body.difficulty,
+        "name": Number(req.body.score),
+    }, function(err) {
+        if(err) console.error("Insertion failed", err);
+    });
 });
 
 /* How to play the game */
