@@ -7,6 +7,7 @@ var circle;
 var globalTimer;
 var clock;
 var score;
+var userId = $('#user').data('config');
 
 // Options
 var timeSelect = 10;	// in s
@@ -46,9 +47,9 @@ function endGame()
 	end.setHorizontalAnchor(jsgl.HorizontalAnchor.CENTER);
 	screen.addElement(end);
 
-	if(user)
+	if(userId)
 	{
-		console.log("Hello: " + user.username);
+		console.log("Hello: " + userId);
 	}
 	else
 	{
