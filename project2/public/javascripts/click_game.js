@@ -12,12 +12,7 @@ var score;
 var timeSelect = 10;	// in s
 var frequency = 1000; 	// in ms
 var radius = 30;		// in px
-
-// Problems
-// Timer not removed after reset - caused by not removing in interval
-// Circle can spawn outside of screen
-// Options menu does not work
-// DO NOT CALL clear() consecutively
+var difficulty;
 
 // Select a random position for a circle
 function setRandCoord(element)
@@ -51,7 +46,14 @@ function endGame()
 	end.setHorizontalAnchor(jsgl.HorizontalAnchor.CENTER);
 	screen.addElement(end);
 
-	runMenu();
+	if(user)
+	{
+		console.log("Hello: " + user.username);
+	}
+	else
+	{
+		runMenu();
+	}
 }
 
 // Initiate the timer
@@ -101,9 +103,9 @@ function playGame()
 // Draw a menu on screen
 function runMenu()
 {
-	addMenuButton(screenX/2, 300, "Easy", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 20; radius = 40; playGame();});
-	addMenuButton(screenX/2, 350, "Medium", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 30; playGame();});
-	addMenuButton(screenX/2, 400, "Hard", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 10; playGame();});
+	addMenuButton(screenX/2, 300, "Easy", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 20; radius = 40; difficulty = "Easy"; playGame();});
+	addMenuButton(screenX/2, 350, "Medium", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 30; difficulty = "Medium"; playGame();});
+	addMenuButton(screenX/2, 400, "Hard", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 10; difficulty = "Hard"; playGame();});
 }
 
 // Draw the title card
