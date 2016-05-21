@@ -28,9 +28,8 @@ router.get( '/reactor', sitePages.reactor );
 
 router.post( '/reactor', function(req, res) {
     console.log("POST score");
-    //console.log(req.body.name + " " + req.body.difficulty + " " + req.body.score);
     // Insert into database
-    Scores.insert({
+    Scores.model('Scores').insert({
         "username": req.body.name,
         "difficulty": red.body.difficulty,
         "score": Number(req.body.score)

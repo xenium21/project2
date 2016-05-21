@@ -8,6 +8,4 @@ var Scores = new Schema({
     score: Number
 });
 
-//Account.plugin(passportLocalMongoose);
-
 module.exports = scoreDb.model('Scores', Scores);
