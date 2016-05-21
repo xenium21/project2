@@ -105,7 +105,7 @@ function playGame()
 function runMenuSubmit()
 {
 	addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, function(){
-			$.ajax({
+			/*$.ajax({
 				type: 'POST',
 				url: '/reactor',
 				data: {
@@ -119,7 +119,12 @@ function runMenuSubmit()
 		        error: function(xhr, msg) {
 		            console.error('AJAX error', xhr.status, msg);
 		        }
-			})
+			})*/
+			$.post("/reactor", {
+				name: userId,
+				difficulty: difficulty,
+				score: score
+			});
 		});
 	addMenuButton(screenX/2, 350, "Easy", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 20; radius = 40; difficulty = "Easy"; playGame();});
 	addMenuButton(screenX/2, 400, "Medium", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 30; difficulty = "Medium"; playGame();});
