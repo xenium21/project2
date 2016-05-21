@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var Scores = new Schema({
     username: String,
     difficulty: String,
-    score: Integer
+    score: Number
 });
 
 //Account.plugin(passportLocalMongoose);

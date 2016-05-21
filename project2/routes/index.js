@@ -31,7 +31,7 @@ router.post( '/reactor', function(req, res) {
 
     // Insert into database
     Scores.insert({
-        "name": req.body.name,
+        "username": req.body.name,
         "difficulty": red.body.difficulty,
         "score": Number(req.body.score),
     }, function(err) {
