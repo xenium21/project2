@@ -114,7 +114,6 @@ function runMenuSubmit()
 					score: score
 				},
 				crossDomain: true,
-    			dataType: 'jsonp',
 				success: function(res, data) {
             		console.log('Score posted', data);
 		        },
