@@ -25,6 +25,13 @@ router.get( '/html', sitePages.html );
 /* The JS game */
 router.get( '/reactor', sitePages.reactor );
 
+router.post( '/reactor', function(req, res) {
+    console.log("POST score");
+    var name = req.body.name;
+    var score = Number(req.body.score);
+    console.log( name + " " + score );
+});
+
 /* How to play the game */
 router.get( '/howto', sitePages.howto );
 

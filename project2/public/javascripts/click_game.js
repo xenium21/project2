@@ -49,7 +49,15 @@ function endGame()
 
 	if(userId)
 	{
-		console.log("Hello: " + userId);
+		//console.log("Hello: " + userId);
+		addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, function(){
+			$.post("/reactor",
+			{
+				name: userId,
+				difficulty: difficulty,
+				score: score
+			});
+		});
 	}
 	else
 	{
