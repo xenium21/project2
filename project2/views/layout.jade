@@ -13,7 +13,9 @@ html
                 = " | "
                 a(href="/register") Register
             if (user)
-                = "Logged in as: " + user.username + " | "
+                = "Logged in as: "
+                div(id='user', data-config='#{user._id}') #{user.username}
+                =" | "
                 a(href="/logout") Logout
         .banner(style='background-image: url("images/banner.png")')
             .title='Quake III World'
