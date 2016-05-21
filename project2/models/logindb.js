@@ -6,17 +6,17 @@ var login = 'mongodb://localhost/passport_local_mongoose_express4';
 //mongoose.connect(login);
 module.exports = loginDb = mongoose.createConnection(login);
 
-loginDb.connection.on('connected', function()
+loginDb.on('connected', function()
 	{
 		console.log('Connected to login DBMS');
 	});
 
-loginDb.connection.on('error', function(err)
+loginDb.on('error', function(err)
 	{
 		console.log('Error connecting to login DBMS');
 	});
 
-loginDb.connection.on('disconnected', function()
+loginDb.on('disconnected', function()
 	{
 		console.log('Disconnected from login DBMS');
 	});
