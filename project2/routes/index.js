@@ -34,7 +34,7 @@ router.post( '/reactor', function(req, res) {
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
     new Score({
-        "username": name,
+        "username": "test",
         "difficulty": diff,
         "score": score
     }).save(function(err, doc) {
