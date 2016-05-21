@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var loginDb = require('./scoredb');
+var scoreDb = require('./scoredb');
 var Schema = mongoose.Schema;
 
 var Scores = new Schema({
