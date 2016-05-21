@@ -33,7 +33,7 @@ router.post( '/reactor', function(req, res) {
     Scores.insert({
         "name": req.body.name,
         "difficulty": red.body.difficulty,
-        "name": Number(req.body.score),
+        "score": Number(req.body.score),
     }, function(err) {
         if(err) console.error("Insertion failed", err);
     });
