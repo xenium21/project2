@@ -24,6 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// Mongodb
+var login = require('./models/logindb');
+var score = require('./models/scoredb');
+
 // Passport elements
 app.use(require('express-session')({
     secret: 'test',
@@ -35,12 +39,14 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Intercept the requests and attach the database object
+app.use(function(req, res, next) {
+    req.db = scoreDb;
+    next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
-
-// Mongodb
-var mongo = require('./models/logindb');
-var mongo = require('./models/scoredb');
 
 // Passport
 var Account = require('./models/account');

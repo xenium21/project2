@@ -5,7 +5,7 @@ var passport = require('passport');
 var Account = require('../models/account');
 var Scores = require('../models/scores');
 
-var db = require('../models/scoredb');
+//var db = require('../models/scoredb');
 
 var router = express.Router();
 
@@ -31,21 +31,12 @@ router.get( '/reactor', sitePages.reactor );
 router.post( '/reactor', function(req, res) {
     console.log("POST score");
     // Insert into database
-    var score = new Scores({
+    req.db.insert({
         "username": req.body.name,
         "difficulty": red.body.difficulty,
         "score": Number(req.body.score)
     }, function(err) {
         if(err) console.error("Insertion failed", err);
-    });
-    score.insert(function(err) {
-        if (err) {
-            return next(err);
-        }
-        else
-        {
-            console.log("Inserted");
-        }
     });
 });
 
