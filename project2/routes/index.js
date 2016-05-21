@@ -6,27 +6,27 @@ var Account = require('../models/account');
 var Scores = require('../models/scores');
 
 var router = express.Router();
-var cors = require('cors');
+
 var sitePages = require('../routes/pages');
 
 /* GET home page. */
-router.get('/', cors(), function(req, res) {
+router.get('/', function(req, res) {
   res.render('index', { title: 'Home', user: req.user });
 });
 
 /* About the theme */
-router.get( '/q3', cors(), sitePages.q3 );
+router.get( '/q3', sitePages.q3 );
 
 /* About JSGL */
-router.get( '/jsgl', cors(), sitePages.jsgl );
+router.get( '/jsgl', sitePages.jsgl );
 
 /* About HTML5 */
-router.get( '/html', cors(), sitePages.html );
+router.get( '/html', sitePages.html );
 
 /* The JS game */
-router.get( '/reactor', cors(), sitePages.reactor );
+router.get( '/reactor', sitePages.reactor );
 
-router.post( '/reactor', cors(), function(req, res) {
+router.post( '/reactor', function(req, res) {
     console.log("POST score");
     // Insert into database
     var name = req.body.name;
@@ -34,7 +34,7 @@ router.post( '/reactor', cors(), function(req, res) {
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
     new Score({
-        "username": "test",
+        "username": name,
         "difficulty": diff,
         "score": score
     }).save(function(err, doc) {
@@ -44,32 +44,32 @@ router.post( '/reactor', cors(), function(req, res) {
 });
 
 /* How to play the game */
-router.get( '/howto', cors(), sitePages.howto );
+router.get( '/howto', sitePages.howto );
 
 /* Hi-score list */
-router.get( '/hiscore', cors(), sitePages.hiscore );
+router.get( '/hiscore', sitePages.hiscore );
 
 /* Dynamic user content */
-router.get( '/elite', cors(), sitePages.elite );
+router.get( '/elite', sitePages.elite );
 
 /* About page */
-router.get( '/about', cors(), sitePages.about );
+router.get( '/about', sitePages.about );
 
 /* Design */
-router.get( '/design', cors(), sitePages.design );
+router.get( '/design', sitePages.design );
 
 /* Validation */
-router.get( '/valid', cors(), sitePages.valid );
+router.get( '/valid', sitePages.valid );
 
 /* Feedback */
-router.get( '/feedback', cors(), sitePages.feedback );
+router.get( '/feedback', sitePages.feedback );
 
 // Account handler
-router.get('/register', cors(), function(req, res) {
+router.get('/register', function(req, res) {
     res.render('register', { title: 'Registration' });
 });
 
-router.post('/register', cors(), function(req, res, next) {
+router.post('/register', function(req, res, next) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
           return res.render('register', { error : err.message });
@@ -86,15 +86,15 @@ router.post('/register', cors(), function(req, res, next) {
     });
 });
 
-router.get('/login', cors(), function(req, res) {
+router.get('/login', function(req, res) {
     res.render('login', { title: 'Login', user : req.user });
 });
 
-router.post('/login', cors(), passport.authenticate('local'), function(req, res) {
+router.post('/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
 });
 
-router.get('/logout', cors(), function(req, res) {
+router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
