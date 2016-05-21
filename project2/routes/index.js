@@ -10,18 +10,18 @@ var cors = require('cors');
 var sitePages = require('../routes/pages');
 
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', cors(), function(req, res) {
   res.render('index', { title: 'Home', user: req.user });
 });
 
 /* About the theme */
-router.get( '/q3', sitePages.q3 );
+router.get( '/q3', cors(), sitePages.q3 );
 
 /* About JSGL */
-router.get( '/jsgl', sitePages.jsgl );
+router.get( '/jsgl', cors(), sitePages.jsgl );
 
 /* About HTML5 */
-router.get( '/html', sitePages.html );
+router.get( '/html', cors(), sitePages.html );
 
 /* The JS game */
 router.get( '/reactor', cors(), sitePages.reactor );
@@ -44,32 +44,32 @@ router.post( '/reactor', cors(), function(req, res) {
 });
 
 /* How to play the game */
-router.get( '/howto', sitePages.howto );
+router.get( '/howto', cors(), sitePages.howto );
 
 /* Hi-score list */
-router.get( '/hiscore', sitePages.hiscore );
+router.get( '/hiscore', cors(), sitePages.hiscore );
 
 /* Dynamic user content */
-router.get( '/elite', sitePages.elite );
+router.get( '/elite', cors(), sitePages.elite );
 
 /* About page */
-router.get( '/about', sitePages.about );
+router.get( '/about', cors(), sitePages.about );
 
 /* Design */
-router.get( '/design', sitePages.design );
+router.get( '/design', cors(), sitePages.design );
 
 /* Validation */
-router.get( '/valid', sitePages.valid );
+router.get( '/valid', cors(), sitePages.valid );
 
 /* Feedback */
-router.get( '/feedback', sitePages.feedback );
+router.get( '/feedback', cors(), sitePages.feedback );
 
 // Account handler
-router.get('/register', function(req, res) {
+router.get('/register', cors(), function(req, res) {
     res.render('register', { title: 'Registration' });
 });
 
-router.post('/register', function(req, res, next) {
+router.post('/register', cors(), function(req, res, next) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
           return res.render('register', { error : err.message });
@@ -86,15 +86,15 @@ router.post('/register', function(req, res, next) {
     });
 });
 
-router.get('/login', function(req, res) {
+router.get('/login', cors(), function(req, res) {
     res.render('login', { title: 'Login', user : req.user });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/login', cors(), passport.authenticate('local'), function(req, res) {
     res.redirect('/');
 });
 
-router.get('/logout', function(req, res) {
+router.get('/logout', cors(), function(req, res) {
     req.logout();
     res.redirect('/');
 });
