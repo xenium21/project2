@@ -114,7 +114,7 @@ function runMenuSubmit()
 					difficulty: difficulty,
 					score: score
 				},
-				//crossDomain: true,
+				crossDomain: true,
 				success: function(res, data) {
             		console.log('Score posted', data);
 		        },
