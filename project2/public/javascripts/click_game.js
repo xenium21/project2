@@ -102,7 +102,7 @@ function playGame()
 }
 
 // Draw a menu on screen
-function runMenu()
+function runMenuSubmit()
 {
 	addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, function(){
 			$.post("/reactor",
