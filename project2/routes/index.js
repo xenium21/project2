@@ -38,7 +38,7 @@ router.post( '/reactor', function(req, res) {
     }, function(err) {
         if(err) console.error("Insertion failed", err);
     });
-    score.save(function(err) {
+    score.insert(function(err) {
         if (err) {
             return next(err);
         }
