@@ -39,12 +39,6 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Intercept the requests and attach the database object
-app.use(function(req, res, next) {
-    req.db = scoreDb;
-    next();
-});
-
 app.use('/', routes);
 app.use('/users', users);
 
