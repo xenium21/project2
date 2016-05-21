@@ -21,3 +21,4 @@ scoreDb.on('disconnected', function()
 		console.log('Disconnected from score DBMS');
 	});
 
+require('./scores');

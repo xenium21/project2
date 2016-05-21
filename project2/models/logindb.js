@@ -21,3 +21,4 @@ loginDb.on('disconnected', function()
 		console.log('Disconnected from login DBMS');
 	});
 
+require('./account');

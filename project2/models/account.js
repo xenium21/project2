@@ -1,5 +1,6 @@
-var mongoose = require('mongoose');
-var loginDb = require('./logindb');
+//var mongoose = require('mongoose');
+//var loginDb = require('./logindb');
+var mongoose = require('mongoose'), loginDb = require('./logindb');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
