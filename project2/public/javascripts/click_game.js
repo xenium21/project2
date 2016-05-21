@@ -108,12 +108,13 @@ function runMenuSubmit()
 			$.ajax({
 				type: 'POST',
 				url: '/reactor',
+				dataType: 'jsonp',
 				data: {
 					name: userId,
 					difficulty: difficulty,
 					score: score
 				},
-				crossDomain: true,
+				//crossDomain: true,
 				success: function(res, data) {
             		console.log('Score posted', data);
 		        },
