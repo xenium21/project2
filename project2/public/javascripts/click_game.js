@@ -49,15 +49,7 @@ function endGame()
 
 	if(userId)
 	{
-		//console.log("Hello: " + userId);
-		addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, function(){
-			$.post("/reactor",
-			{
-				name: userId,
-				difficulty: difficulty,
-				score: score
-			});
-		});
+		runMenuSubmit();
 	}
 	else
 	{
@@ -107,6 +99,22 @@ function playGame()
 	startCountDown(timer);
 
 	drawCircle();
+}
+
+// Draw a menu on screen
+function runMenu()
+{
+	addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, function(){
+			$.post("/reactor",
+			{
+				name: userId,
+				difficulty: difficulty,
+				score: score
+			});
+		});
+	addMenuButton(screenX/2, 350, "Easy", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 20; radius = 40; difficulty = "Easy"; playGame();});
+	addMenuButton(screenX/2, 400, "Medium", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 30; difficulty = "Medium"; playGame();});
+	addMenuButton(screenX/2, 450, "Hard", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 10; difficulty = "Hard"; playGame();});
 }
 
 // Draw a menu on screen

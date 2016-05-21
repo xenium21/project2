@@ -31,7 +31,7 @@ router.post( '/reactor', function(req, res) {
     var score = Number(req.body.score);
     console.log( name + " " + score );
 
-    res.redirect('/reactor');
+    res.redirect('/hiscore');
 });
 
 /* How to play the game */
