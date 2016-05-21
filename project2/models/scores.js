@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var loginDb = require('./scoredb');
 var Schema = mongoose.Schema;
 
 var Scores = new Schema({
@@ -9,4 +10,4 @@ var Scores = new Schema({
 
 //Account.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('Scores', Scores);
+module.exports = scoreDb.model('Scores', Scores);

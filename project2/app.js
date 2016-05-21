@@ -41,7 +41,8 @@ app.use('/', routes);
 app.use('/users', users);
 
 // Mongodb
-var mongo = require('./models/db');
+var mongo = require('./models/logindb');
+var mongo = require('./models/scoredb');
 
 // Passport
 var Account = require('./models/account');
