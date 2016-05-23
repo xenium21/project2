@@ -34,7 +34,10 @@ router.post( '/reactor', function(req, res) {
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
 
-    Scores.find({ username: name }).pretty();
+    if( Scores.find({ username: name }) )
+    {
+        console.log("exists");
+    }
 
     new Scores({
     "username": name,
