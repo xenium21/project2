@@ -34,7 +34,7 @@ router.post( '/reactor', function(req, res) {
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
 
-    if( Scores.find({ username: name, difficulty: diff }).limit(1).count > 0 )
+    /*if( Scores.find({ username: name, difficulty: diff }).limit(1).count > 0 )
     {
         console.log("Updating");
         Scores.update({ username: name, difficulty: diff }, {$max: score});
@@ -49,8 +49,12 @@ router.post( '/reactor', function(req, res) {
             if(err) res.json(err);
             else res.send("Inserted");
         });   
-    }
-    
+    }*/
+    Scores.update(
+        { username: name, difficulty: diff }, 
+        { username: name, difficulty: diff, $max: { score: score } }, 
+        { upsert: true }
+        );
 });
 
 /* How to play the game */
