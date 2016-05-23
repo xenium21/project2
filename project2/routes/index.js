@@ -52,7 +52,7 @@ router.post( '/reactor', function(req, res) {
     }*/
     Scores.update(
         { username: name, difficulty: diff }, 
-        { username: name, difficulty: diff, $max: { score: score } }, 
+        { username: name, difficulty: diff, {$max: { score: score }} }, 
         { upsert: true }
         );
 });
