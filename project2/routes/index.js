@@ -34,9 +34,7 @@ router.post( '/reactor', function(req, res) {
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
 
-    var log = Scores.find({ username: name });
-
-    log.forEach(printjson);
+    Scores.find({ username: name }).pretty();
 
     new Scores({
     "username": name,
