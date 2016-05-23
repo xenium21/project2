@@ -108,7 +108,6 @@ function runMenuSubmit()
 		$.ajax({
 			type: 'POST',
 			url: '/reactor',
-			//dataType: 'jsonp',
 			data: {
 				name: userId,
 				difficulty: difficulty,
@@ -117,8 +116,10 @@ function runMenuSubmit()
 			success: function(res, data) {
 				console.log('Score posted', data);
 			},
-			error: function(xhr, msg) {
-				console.error('AJAX error', xhr.status, msg);
+			error: function (xhr, ajaxOptions, thrownError) {
+				console.log(xhr.status);
+				console.log(xhr.responseText);
+				console.log(thrownError);
 			}
 		})
 	});
