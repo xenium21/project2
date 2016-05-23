@@ -33,10 +33,15 @@ router.post( '/reactor', function(req, res) {
     var diff = req.body.difficulty;
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
+
+    var log = Scores.find({ username: name });
+
+    log.forEach(printjson);
+
     new Scores({
-        "username": name,
-        "difficulty": diff,
-        "score": score
+    "username": name,
+    "difficulty": diff,
+    "score": score
     }).save(function(err, doc) {
         if(err) res.json(err);
         else res.send("Inserted");
