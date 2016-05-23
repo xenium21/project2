@@ -105,7 +105,7 @@ function playGame()
 function runMenuSubmit()
 {
 	addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, function(){
-			./*$.ajax({
+			/*$.ajax({
 				type: 'POST',
 				url: '/reactor',
 				//dataType: 'jsonp',
