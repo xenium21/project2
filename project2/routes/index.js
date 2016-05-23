@@ -35,20 +35,20 @@ router.post( '/reactor', function(req, res) {
     console.log("Got " + name + " " + diff + " " + score);
 
     new Scores({
-    "username": name,
-    "difficulty": diff,
-    "score": score
+        "username": name,
+        "difficulty": diff,
+        "score": score
     }).save(function(err, doc) {
-        if(err) res.json(err);
-        else res.send("Inserted");
+        if(err)
+        {
+            res.json(err);
+        }
+        else 
+        {
+            res.send("Inserted");
+            res.redirect('/hiscore');
+        }
     });
-
-    res.redirect('/hiscore');
-    /*Scores.update(
-        { username: name, difficulty: diff }, 
-        { username: name, difficulty: diff, $max: { score: score } }, 
-        { upsert: true }
-        );*/
 });
 
 /* How to play the game */
