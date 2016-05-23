@@ -46,7 +46,6 @@ router.post( '/reactor', function(req, res) {
         else 
         {
             res.send("Inserted");
-            res.redirect('/hiscore');
         }
     });
 });
