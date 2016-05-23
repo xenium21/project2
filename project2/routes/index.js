@@ -33,7 +33,7 @@ router.post( '/reactor', function(req, res) {
     var diff = req.body.difficulty;
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
-    new Score({
+    new Scores({
         "username": name,
         "difficulty": diff,
         "score": score
