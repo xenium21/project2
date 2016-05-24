@@ -65,22 +65,22 @@ router.get( '/elite', function(req, res)
         {$group: {_id: null, count: {$sum: 1}}}
         ] );*/
 
-    function getCount( match, callback )
+    function getCount( store, match, callback )
     {
         Scores.count(match, function(err, count) {
             if(err) throw err;
             if(count)
             {
                 console.log(count);
-                played = count;
+                store = count;
             }
             else
             {
                 console.log("no");
-                played = 0;
+                store = 0;
             }
 
-            callback(num);
+            callback( store );
         });
     }
 
@@ -91,7 +91,7 @@ router.get( '/elite', function(req, res)
 
     var played;
 
-    getCount({username: req.user._id}, printNum);
+    getCount(played, {username: req.user._id}, printNum);
 
     var hard = Scores.aggregate( [
         {$match: {username: req.user._id, difficulty: "Hard"}}, 
