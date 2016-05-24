@@ -70,11 +70,11 @@ router.get( '/elite', function(req, res)
             if(err) throw err;
             if(count)
             {
-                store = count;
+                game.store = count;
             }
             else
             {
-                store = 0;
+                game.store = 0;
             }
 
             callback();
@@ -87,12 +87,12 @@ router.get( '/elite', function(req, res)
         if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game});
     }
 
-    //var played, hard, medium, easy;
+    var played, hard, medium, easy;
 
-    getCount(game.played, {username: req.user._id}, attemptTransaction);
-    getCount(game.hard, {username: req.user._id, difficulty: "Hard"}, attemptTransaction);
-    getCount(game.medium, {username: req.user._id, difficulty: "Medium"}, attemptTransaction);
-    getCount(game.easy, {username: req.user._id, difficulty: "Easy"}, attemptTransaction);
+    getCount(played, {username: req.user._id}, attemptTransaction);
+    getCount(hard, {username: req.user._id, difficulty: "Hard"}, attemptTransaction);
+    getCount(medium, {username: req.user._id, difficulty: "Medium"}, attemptTransaction);
+    getCount(easy, {username: req.user._id, difficulty: "Easy"}, attemptTransaction);
 } );
 
 /* About page */
