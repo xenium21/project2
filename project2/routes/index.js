@@ -65,7 +65,7 @@ router.get( '/elite', function(req, res)
     var medium = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Medium"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
     var easy = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Easy"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
 
-    console.log(played + " " + hard + " " + medium + " " + easy);
+    console.log("Input check" + played + " " + hard + " " + medium + " " + easy);
 
     var game = { played: played, hard: hard, medium: medium, easy: easy };
 
