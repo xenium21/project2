@@ -67,12 +67,14 @@ router.get( '/elite', function(req, res)
     var played;
     Scores.count({score: 19}, function(err, count) {
         if(err) throw err;
-        if(count > 0)
+        if(count)
         {
+            console.log(count);
             played = count
         }
         else
         {
+            console.log("no");
             played = 0;
         }
     });
