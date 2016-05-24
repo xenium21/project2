@@ -64,12 +64,12 @@ router.get( '/elite', function(req, res)
         {$match: {username: req.user._id}}, 
         {$group: {_id: null, count: {$sum: 1}}}
         ] );*/
-    var played = Scores.count({score: 19}, function(err, count) {
+    Scores.count({score: 19}, function(err, count) {
         if(err) throw err;
         if(count)
         {
             console.log(count);
-            return count;
+            var played = count;
         }
         else
         {
