@@ -60,12 +60,12 @@ router.get( '/hiscore', sitePages.hiscore );
 //router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
-    var played = Scores.aggregate( {$match: {username: req.user._id}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
-    var hard = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Hard"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
-    var medium = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Medium"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
-    var easy = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Easy"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
+    var played = Scores.aggregate( {$match: {username: req.user._id}}, {$group: {_id: null, count: {$sum: 1}}} );
+    var hard = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Hard"}}, {$group: {_id: null, count: {$sum: 1}}} );
+    var medium = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Medium"}}, {$group: {_id: null, count: {$sum: 1}}} );
+    var easy = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Easy"}}, {$group: {_id: null, count: {$sum: 1}}} );
 
-    console.log("Input check" + played + " " + hard + " " + medium + " " + easy);
+    console.log("Input check: " + played + " " + hard + " " + medium + " " + easy);
 
     var game = { played: played, hard: hard, medium: medium, easy: easy };
 
