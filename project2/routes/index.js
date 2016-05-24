@@ -57,7 +57,6 @@ router.get( '/howto', sitePages.howto );
 router.get( '/hiscore', sitePages.hiscore );
 
 /* Dynamic user content */
-//router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
     var game = {played: null, hard: null, medium: null, easy: null};
@@ -83,7 +82,6 @@ router.get( '/elite', function(req, res)
 
     function attemptTransaction()
     {
-        console.log(JSON.stringify(game));
         if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game});
     }
 

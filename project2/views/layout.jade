@@ -45,9 +45,16 @@ html
             .content_section
                 block content
         footer
+            script(type='text/javascript')
+                document.getElementById("mod").innerHTML = document.lastModified;
+                document.getElementById("date").innerHTML = new Date();
             .footer_element
                 .footer_info
-                    Last Modified:<br />Date:
+                    = "Last Modified: "
+                    span(id="mod")
+                    <br />
+                    = "Date: "
+                    span(id="date")
             .footer_element
                 a(href='http://jigsaw.w3.org/css-validator/check/referer')
                     img(style='border:0;width:88px;height:31px', src='http://jigsaw.w3.org/css-validator/images/vcss', alt='Valid CSS!')
