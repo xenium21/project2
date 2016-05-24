@@ -64,22 +64,34 @@ router.get( '/elite', function(req, res)
         {$match: {username: req.user._id}}, 
         {$group: {_id: null, count: {$sum: 1}}}
         ] );*/
-    console.log("Input check: " + played + " " + hard + " " + medium + " " + easy);
-    var played;
-    Scores.count({score: 19}, function(err, count) {
+
+    function getCount( match, callback )
+    {
+         Scores.count(match, function(err, count) {
         if(err) throw err;
         if(count)
         {
             console.log(count);
             played = count;
-            console.log(played);
         }
         else
         {
             console.log("no");
             played = 0;
         }
-    });
+
+        callback();
+    }
+
+    function printNum( var )
+    {
+        console.log( var );
+    }
+
+    var played;
+
+    getCount({username: req.user._id}, printNum);
+
     var hard = Scores.aggregate( [
         {$match: {username: req.user._id, difficulty: "Hard"}}, 
         {$group: {_id: null, count: {$sum: 1}}}
@@ -92,8 +104,6 @@ router.get( '/elite', function(req, res)
         {$match: {username: req.user._id, difficulty: "Easy"}}, 
         {$group: {_id: null, count: {$sum: 1}}}
         ] );
-
-    console.log("Input check: " + played + " " + hard + " " + medium + " " + easy);
 
     res.render('elite', {title: 'Elite corner', user: req.user, games: null});
 } );
