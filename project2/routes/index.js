@@ -64,7 +64,7 @@ router.get( '/elite', function(req, res)
         {$match: {username: req.user._id}}, 
         {$group: {_id: null, count: {$sum: 1}}}
         ] );*/
-    var player = Scores.count({score: 19});
+    var played = Scores.count({score: 19});
     var hard = Scores.aggregate( [
         {$match: {username: req.user._id, difficulty: "Hard"}}, 
         {$group: {_id: null, count: {$sum: 1}}}
