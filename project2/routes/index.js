@@ -80,13 +80,13 @@ router.get( '/elite', function(req, res)
                 played = 0;
             }
 
-            callback();
+            callback(num);
         });
     }
 
-    function printNum( var )
+    function printNum( num )
     {
-        console.log( var );
+        console.log( num );
     }
 
     var played;
