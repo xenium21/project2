@@ -62,10 +62,10 @@ router.get( '/elite', function(req, res)
 {
     var played = Scores.find( {username: req.user._id} ).count;
     var hard = Scores.find( {username: req.user._id, difficulty: "Hard"} ).count;
-    var med = Scores.find( {username: req.user._id, difficulty: "Medium"} ).count;
+    var medium = Scores.find( {username: req.user._id, difficulty: "Medium"} ).count;
     var easy = Scores.find( {username: req.user._id, difficulty: "Easy"} ).count;
 
-    var game = { played: played, hard: hard, med: medium, easy: easy };
+    var game = { played: played, hard: hard, medium: medium, easy: easy };
 
     res.render('elite', {title: 'Elite corner', user: req.user, games: game});
 } );
