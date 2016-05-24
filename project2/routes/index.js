@@ -67,20 +67,21 @@ router.get( '/elite', function(req, res)
 
     function getCount( match, callback )
     {
-         Scores.count(match, function(err, count) {
-        if(err) throw err;
-        if(count)
-        {
-            console.log(count);
-            played = count;
-        }
-        else
-        {
-            console.log("no");
-            played = 0;
-        }
+        Scores.count(match, function(err, count) {
+            if(err) throw err;
+            if(count)
+            {
+                console.log(count);
+                played = count;
+            }
+            else
+            {
+                console.log("no");
+                played = 0;
+            }
 
-        callback();
+            callback();
+        }
     }
 
     function printNum( var )
