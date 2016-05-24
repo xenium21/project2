@@ -60,12 +60,17 @@ router.get( '/hiscore', sitePages.hiscore );
 //router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
-    var played = Scores.find( {username: req.user._id} ).count();
+    /*var played = Scores.find( {username: req.user._id} ).count();
     var hard = Scores.find( {username: req.user._id, difficulty: "Hard"} ).count();
     var medium = Scores.find( {username: req.user._id, difficulty: "Medium"} ).count();
-    var easy = Scores.find( {username: req.user._id, difficulty: "Easy"} ).count();
+    var easy = Scores.find( {username: req.user._id, difficulty: "Easy"} ).count();*/
 
-    var game = { played: played, hard: hard, medium: medium, easy: easy };
+    var played = Scores.find( {$match: {username: req.user._id}}, {$group: {_id: null, count: {$sum: 1}}} );
+    var hard = Scores.find( {$match: {username: req.user._id, difficulty: "Hard"}}, {$group: {_id: null, count: {$sum: 1}}} );
+    var medium = Scores.find( {$match: {username: req.user._id, difficulty: "Medium"}}, {$group: {_id: null, count: {$sum: 1}}} );
+    var easy = Scores.find( {$match: {username: req.user._id, difficulty: "Easy"}}, {$group: {_id: null, count: {$sum: 1}}} );
+
+    var game = { played: played.count, hard: hard.count, medium: medium.count, easy: easy.count };
 
     res.render('elite', {title: 'Elite corner', user: req.user, games: game});
 } );
