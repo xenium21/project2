@@ -70,11 +70,11 @@ router.get( '/elite', function(req, res)
             if(err) throw err;
             if(count)
             {
-                game.store = count;
+                game[store] = count;
             }
             else
             {
-                game.store = 0;
+                game[store] = 0;
             }
 
             callback();
