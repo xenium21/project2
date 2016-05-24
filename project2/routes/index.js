@@ -60,10 +60,11 @@ router.get( '/hiscore', sitePages.hiscore );
 //router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
-    var played = Scores.aggregate( [
+    /*var played = Scores.aggregate( [
         {$match: {username: req.user._id}}, 
         {$group: {_id: null, count: {$sum: 1}}}
-        ] );
+        ] );*/
+    var player = Scores.count({score: 19});
     var hard = Scores.aggregate( [
         {$match: {username: req.user._id, difficulty: "Hard"}}, 
         {$group: {_id: null, count: {$sum: 1}}}
