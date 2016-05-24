@@ -89,7 +89,7 @@ router.get( '/elite', function(req, res)
         {$group: {_id: null, count: {$sum: 1}}}
         ] );
 
-    console.log("Input check: " + played.count + " " + hard + " " + medium + " " + easy);
+    console.log("Input check: " + played + " " + hard + " " + medium + " " + easy);
 
     var game = { played: played, hard: hard, medium: medium, easy: easy };
 
