@@ -60,15 +60,12 @@ router.get( '/hiscore', sitePages.hiscore );
 //router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
-    /*var played = Scores.find( {username: req.user._id} ).count();
-    var hard = Scores.find( {username: req.user._id, difficulty: "Hard"} ).count();
-    var medium = Scores.find( {username: req.user._id, difficulty: "Medium"} ).count();
-    var easy = Scores.find( {username: req.user._id, difficulty: "Easy"} ).count();*/
-
     var played = Scores.aggregate( {$match: {username: req.user._id}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
     var hard = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Hard"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
     var medium = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Medium"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
     var easy = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Easy"}}, {$group: {_id: null, count: {$sum: 1}}} ).count;
+
+    console.log(player + " " + hard + " " + medium + " " + easy);
 
     var game = { played: played, hard: hard, medium: medium, easy: easy };
 
