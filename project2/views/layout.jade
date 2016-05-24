@@ -6,9 +6,6 @@ html
         script(type='text/javascript', src='javascripts/jsgl.min.js')
         script(src='https://code.jquery.com/jquery-2.2.3.min.js', integrity='sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=', crossorigin='anonymous')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
-        script(type='text/javascript')
-            document.getElementById("mod").innerHTML = document.lastModified;
-            document.getElementById("date").innerHTML = new Date();
     body
         .login
             if (!user)
@@ -50,11 +47,9 @@ html
         footer
             .footer_element
                 .footer_info
-                    = "Last Modified: "
-                    span(id="mod")
+                    = "Last Modified: TODO"
                     <br />
-                    = "Date: "
-                    span(id="date")
+                    = "Date: " + date
             .footer_element
                 a(href='http://jigsaw.w3.org/css-validator/check/referer')
                     img(style='border:0;width:88px;height:31px', src='http://jigsaw.w3.org/css-validator/images/vcss', alt='Valid CSS!')

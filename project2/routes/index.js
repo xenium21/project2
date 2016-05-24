@@ -9,9 +9,11 @@ var router = express.Router();
 
 var sitePages = require('../routes/pages');
 
+var date = new Date();
+
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Home', user: req.user });
+  res.render('index', { title: 'Home', user: req.user, date: date });
 });
 
 /* About the theme */
@@ -82,7 +84,7 @@ router.get( '/elite', function(req, res)
 
     function attemptTransaction()
     {
-        if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game});
+        if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game, date: date});
     }
 
     getCount("played", {username: req.user._id}, attemptTransaction);
@@ -105,7 +107,7 @@ router.get( '/feedback', sitePages.feedback );
 
 // Account handler
 router.get('/register', function(req, res) {
-    res.render('register', { title: 'Registration' });
+    res.render('register', { title: 'Registration', date: date });
 });
 
 router.post('/register', function(req, res, next) {
@@ -126,7 +128,7 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/login', function(req, res) {
-    res.render('login', { title: 'Login', user : req.user });
+    res.render('login', { title: 'Login', user : req.user, date: date });
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
