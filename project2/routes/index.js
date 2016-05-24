@@ -60,23 +60,17 @@ router.get( '/hiscore', sitePages.hiscore );
 //router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
-    /*var played = Scores.aggregate( [
-        {$match: {username: req.user._id}}, 
-        {$group: {_id: null, count: {$sum: 1}}}
-        ] );*/
-
+    var game = {played: null, hard: null, medium: null, easy: null};
     function getCount( store, match, callback )
     {
         Scores.count(match, function(err, count) {
             if(err) throw err;
             if(count)
             {
-                console.log(count);
                 store = count;
             }
             else
             {
-                console.log("no");
                 store = 0;
             }
 
@@ -84,9 +78,9 @@ router.get( '/elite', function(req, res)
         });
     }
 
-    function printNum( num )
+    function setStore( obj, store )
     {
-        console.log( num );
+        game.store = store;
     }
 
     var played, hard, medium, easy;
@@ -96,20 +90,7 @@ router.get( '/elite', function(req, res)
     getCount(medium, {username: req.user._id, difficulty: "Medium"}, printNum);
     getCount(easy, {username: req.user._id, difficulty: "Easy"}, printNum);
 
-    /*var hard = Scores.aggregate( [
-        {$match: {username: req.user._id, difficulty: "Hard"}}, 
-        {$group: {_id: null, count: {$sum: 1}}}
-        ] );
-    var medium = Scores.aggregate( [
-        {$match: {username: req.user._id, difficulty: "Medium"}}, 
-        {$group: {_id: null, count: {$sum: 1}}}
-        ] );
-    var easy = Scores.aggregate( [
-        {$match: {username: req.user._id, difficulty: "Easy"}}, 
-        {$group: {_id: null, count: {$sum: 1}}}
-        ] );*/
-
-    res.render('elite', {title: 'Elite corner', user: req.user, games: null});
+    res.render('elite', {title: 'Elite corner', user: req.user, games: game});
 } );
 
 /* About page */
