@@ -2,7 +2,14 @@ extends layout
 
 block content
     .content_section
-        .content_title='Elite corner'
+        .content_title='Player Profile'
         .content_text
             p.
-                TODO
+                Username: #{user.username}
+            p.
+            	ID: #{user._id}
+            p.
+            	Games played: #{games.played}
+            	Hard: #{games.hard}
+            	Medium: #{games.medium}
+            	Easy: #{games.easy}

@@ -57,7 +57,18 @@ router.get( '/howto', sitePages.howto );
 router.get( '/hiscore', sitePages.hiscore );
 
 /* Dynamic user content */
-router.get( '/elite', sitePages.elite );
+//router.get( '/elite', sitePages.elite );
+router.get( '/elite', function(req, res)
+{
+    var played = Scores.find( {username: req.user._id} ).count;
+    var hard = Scores.find( {username: req.user._id, difficulty: "Hard"} ).count;
+    var med = Scores.find( {username: req.user._id, difficulty: "Medium"} ).count;
+    var easy = Scores.find( {username: req.user._id, difficulty: "Easy"} ).count;
+
+    var game = { played: played, hard: hard, med: medium, easy: easy };
+
+    res.render('elite', {title: 'Elite corner', user: req.user, games: game});
+} );
 
 /* About page */
 router.get( '/about', sitePages.about );

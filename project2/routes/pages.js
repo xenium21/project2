@@ -28,10 +28,10 @@ module.exports.hiscore = function(req, res)
 	res.render('hiscore', {title: 'Global hiscores', user: req.user});
 }
 
-module.exports.elite = function(req, res)
+/*module.exports.elite = function(req, res)
 {
-	res.render('elite', {title: 'Elite corner', user: req.user});
-}
+	res.render('elite', {title: 'Elite corner', user: req.user, games: });
+}*/
 
 module.exports.about = function(req, res)
 {
