@@ -93,9 +93,9 @@ router.get( '/elite', function(req, res)
         {$group: {_id: null, count: {$sum: 1}}}
         ] );
 
-    
+    console.log("Input check: " + played + " " + hard + " " + medium + " " + easy);
 
-    res.render('elite', {title: 'Elite corner', user: req.user, games: game});
+    res.render('elite', {title: 'Elite corner', user: req.user, games: null});
 } );
 
 /* About page */
