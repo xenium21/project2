@@ -61,9 +61,12 @@ router.get( '/hiscore', sitePages.hiscore );
 router.get( '/elite', function(req, res)
 {
     var game = {played: null, hard: null, medium: null, easy: null};
+    var queries = 4;
+
     function getCount( store, match, callback )
     {
         Scores.count(match, function(err, count) {
+            queries--;
             if(err) throw err;
             if(count)
             {
@@ -74,23 +77,21 @@ router.get( '/elite', function(req, res)
                 store = 0;
             }
 
-            callback( store );
+            callback();
         });
     }
 
-    function setStore( obj, store )
+    function attemptTransaction()
     {
-        game.store = store;
+        if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game});
     }
 
-    var played, hard, medium, easy;
+    //var played, hard, medium, easy;
 
-    getCount(played, {username: req.user._id}, printNum);
-    getCount(hard, {username: req.user._id, difficulty: "Hard"}, printNum);
-    getCount(medium, {username: req.user._id, difficulty: "Medium"}, printNum);
-    getCount(easy, {username: req.user._id, difficulty: "Easy"}, printNum);
-
-    res.render('elite', {title: 'Elite corner', user: req.user, games: game});
+    getCount(game.played, {username: req.user._id}, attemptTransaction);
+    getCount(game.hard, {username: req.user._id, difficulty: "Hard"}, attemptTransaction);
+    getCount(game.medium, {username: req.user._id, difficulty: "Medium"}, attemptTransaction);
+    getCount(game.easy, {username: req.user._id, difficulty: "Easy"}, attemptTransaction);
 } );
 
 /* About page */
