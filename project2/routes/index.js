@@ -60,10 +60,22 @@ router.get( '/hiscore', sitePages.hiscore );
 //router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
-    var played = Scores.aggregate( {$match: {username: req.user._id}}, {$group: {_id: null, count: {$sum: 1}}} );
-    var hard = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Hard"}}, {$group: {_id: null, count: {$sum: 1}}} );
-    var medium = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Medium"}}, {$group: {_id: null, count: {$sum: 1}}} );
-    var easy = Scores.aggregate( {$match: {username: req.user._id, difficulty: "Easy"}}, {$group: {_id: null, count: {$sum: 1}}} );
+    var played = Scores.aggregate( [
+        {$match: {username: req.user._id}}, 
+        {$group: {_id: null, count: {$sum: 1}}}
+        ] );
+    var hard = Scores.aggregate( [
+        {$match: {username: req.user._id, difficulty: "Hard"}}, 
+        {$group: {_id: null, count: {$sum: 1}}}
+        ] );
+    var medium = Scores.aggregate( [
+        {$match: {username: req.user._id, difficulty: "Medium"}}, 
+        {$group: {_id: null, count: {$sum: 1}}}
+        ] );
+    var easy = Scores.aggregate( [
+        {$match: {username: req.user._id, difficulty: "Easy"}}, 
+        {$group: {_id: null, count: {$sum: 1}}}
+        ] );
 
     console.log("Input check: " + JSON.stringify(played) + " " + hard + " " + medium + " " + easy);
 
