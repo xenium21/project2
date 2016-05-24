@@ -60,10 +60,10 @@ router.get( '/hiscore', sitePages.hiscore );
 //router.get( '/elite', sitePages.elite );
 router.get( '/elite', function(req, res)
 {
-    var played = Scores.find( {username: req.user._id} ).count;
-    var hard = Scores.find( {username: req.user._id, difficulty: "Hard"} ).count;
-    var medium = Scores.find( {username: req.user._id, difficulty: "Medium"} ).count;
-    var easy = Scores.find( {username: req.user._id, difficulty: "Easy"} ).count;
+    var played = Scores.find( {username: req.user._id} ).count();
+    var hard = Scores.find( {username: req.user._id, difficulty: "Hard"} ).count();
+    var medium = Scores.find( {username: req.user._id, difficulty: "Medium"} ).count();
+    var easy = Scores.find( {username: req.user._id, difficulty: "Easy"} ).count();
 
     var game = { played: played, hard: hard, medium: medium, easy: easy };
 
