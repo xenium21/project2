@@ -64,6 +64,7 @@ router.get( '/elite', function(req, res)
         {$match: {username: req.user._id}}, 
         {$group: {_id: null, count: {$sum: 1}}}
         ] );*/
+    console.log("Input check: " + played + " " + hard + " " + medium + " " + easy);
     var played;
     Scores.count({score: 19}, function(err, count) {
         if(err) throw err;
@@ -92,9 +93,7 @@ router.get( '/elite', function(req, res)
         {$group: {_id: null, count: {$sum: 1}}}
         ] );
 
-    console.log("Input check: " + played + " " + hard + " " + medium + " " + easy);
-
-    var game = { played: played, hard: hard, medium: medium, easy: easy };
+    
 
     res.render('elite', {title: 'Elite corner', user: req.user, games: game});
 } );
