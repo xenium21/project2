@@ -83,6 +83,7 @@ router.get( '/elite', function(req, res)
 
     function attemptTransaction()
     {
+        console.log(JSON.stringify(game));
         if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game});
     }
 
