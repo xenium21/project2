@@ -81,7 +81,7 @@ router.get( '/elite', function(req, res)
             }
 
             callback();
-        }
+        });
     }
 
     function printNum( var )
