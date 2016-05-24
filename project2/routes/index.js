@@ -89,11 +89,14 @@ router.get( '/elite', function(req, res)
         console.log( num );
     }
 
-    var played;
+    var played, hard, medium, easy;
 
     getCount(played, {username: req.user._id}, printNum);
+    getCount(hard, {username: req.user._id, difficulty: "Hard"}, printNum);
+    getCount(medium, {username: req.user._id, difficulty: "Medium"}, printNum);
+    getCount(easy, {username: req.user._id, difficulty: "Easy"}, printNum);
 
-    var hard = Scores.aggregate( [
+    /*var hard = Scores.aggregate( [
         {$match: {username: req.user._id, difficulty: "Hard"}}, 
         {$group: {_id: null, count: {$sum: 1}}}
         ] );
@@ -104,7 +107,7 @@ router.get( '/elite', function(req, res)
     var easy = Scores.aggregate( [
         {$match: {username: req.user._id, difficulty: "Easy"}}, 
         {$group: {_id: null, count: {$sum: 1}}}
-        ] );
+        ] );*/
 
     res.render('elite', {title: 'Elite corner', user: req.user, games: null});
 } );
