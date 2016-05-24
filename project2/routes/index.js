@@ -70,7 +70,7 @@ router.get( '/elite', function(req, res)
         if(count)
         {
             console.log(count);
-            played = count
+            played = count;
         }
         else
         {
