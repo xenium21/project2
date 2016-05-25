@@ -5,16 +5,16 @@ module.exports.index = function(req, res)
   res.render('index', { title: 'Home', user: req.user, date: new Date() }) 
 }
 
-modules.exports.login = function(req, res) {
+module.exports.login = function(req, res) {
     res.render('login', { title: 'Login', user : req.user, date: date });
 }
 
-modules.exports.logout = function(req, res) {
+module.exports.logout = function(req, res) {
     req.logout();
     res.redirect('/');
 }
 
-modules.exports.register = function(req, res) {
+module.exports.register = function(req, res) {
     res.render('register', { title: 'Registration', date: date });
 }
 
