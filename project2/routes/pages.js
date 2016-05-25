@@ -47,7 +47,35 @@ module.exports.howto = function(req, res)
 
 module.exports.hiscore = function(req, res)
 {
-	res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date});
+	/*var queries = 1;
+
+	function getCount( store, match, callback )
+    {
+        Scores.count(match, function(err, count) {
+            queries--;
+            if(err) throw err;
+            if(count)
+            {
+                game[store] = count;
+            }
+            else
+            {
+                game[store] = 0;
+            }
+
+            callback();
+        });
+    }
+
+    function attemptTransaction()
+    {
+        if(queries == 0) res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date});
+    }*/
+
+    var top = Scores.find().sort({score: -1}).limit(20).forEach(function(doc)
+    	{
+    		console.log(JSON.stringify(doc));
+    	});
 }
 
 module.exports.elite = function(req, res)
