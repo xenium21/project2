@@ -10,9 +10,7 @@ var router = express.Router();
 var sitePages = require('../routes/pages');
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Home', user: req.user, date: date });
-});
+router.get('/', sitePages.index);
 
 /* About the theme */
 router.get( '/q3', sitePages.q3 );
@@ -57,39 +55,7 @@ router.get( '/howto', sitePages.howto );
 router.get( '/hiscore', sitePages.hiscore );
 
 /* Dynamic user content */
-router.get( '/elite', function(req, res)
-{
-    var game = {played: null, hard: null, medium: null, easy: null};
-    var queries = 4;
-
-    function getCount( store, match, callback )
-    {
-        Scores.count(match, function(err, count) {
-            queries--;
-            if(err) throw err;
-            if(count)
-            {
-                game[store] = count;
-            }
-            else
-            {
-                game[store] = 0;
-            }
-
-            callback();
-        });
-    }
-
-    function attemptTransaction()
-    {
-        if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game, date: new Date()});
-    }
-
-    getCount("played", {username: req.user._id}, attemptTransaction);
-    getCount("hard", {username: req.user._id, difficulty: "Hard"}, attemptTransaction);
-    getCount("medium", {username: req.user._id, difficulty: "Medium"}, attemptTransaction);
-    getCount("easy", {username: req.user._id, difficulty: "Easy"}, attemptTransaction);
-} );
+router.get( '/elite', sitePages.elite );
 
 /* About page */
 router.get( '/about', sitePages.about );

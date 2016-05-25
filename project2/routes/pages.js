@@ -1,5 +1,10 @@
 var date = new Date();
 
+module.exports.index = function(req, res)
+{
+  res.render('index', { title: 'Home', user: req.user, date: new Date() }) 
+}
+
 module.exports.q3 = function(req, res)
 {
 	res.render('q3', {title: 'Quake III', user: req.user, date: date});
@@ -28,6 +33,40 @@ module.exports.howto = function(req, res)
 module.exports.hiscore = function(req, res)
 {
 	res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date});
+}
+
+module.exports.elite = function(req, res)
+{
+    var game = {played: null, hard: null, medium: null, easy: null};
+    var queries = 4;
+
+    function getCount( store, match, callback )
+    {
+        Scores.count(match, function(err, count) {
+            queries--;
+            if(err) throw err;
+            if(count)
+            {
+                game[store] = count;
+            }
+            else
+            {
+                game[store] = 0;
+            }
+
+            callback();
+        });
+    }
+
+    function attemptTransaction()
+    {
+        if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game, date: new Date()});
+    }
+
+    getCount("played", {username: req.user._id}, attemptTransaction);
+    getCount("hard", {username: req.user._id, difficulty: "Hard"}, attemptTransaction);
+    getCount("medium", {username: req.user._id, difficulty: "Medium"}, attemptTransaction);
+    getCount("easy", {username: req.user._id, difficulty: "Easy"}, attemptTransaction);
 }
 
 module.exports.about = function(req, res)
