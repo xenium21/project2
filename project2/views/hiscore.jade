@@ -4,6 +4,7 @@ block content
     .content_section
         .content_title='Top 20 Hard Games'
         .content_text
+            p #{scores.hard}
             if scores.hard
                 table
                     tr
@@ -16,7 +17,7 @@ block content
                             td #{record.username}
                             td #{record.score}
             else
-                Empty
+                p Empty
         .content_title='Top 20 Medium Games'
         .content_text
             if scores.medium
@@ -31,7 +32,7 @@ block content
                             td #{record.username}
                             td #{record.score}
             else
-                Empty
+                p Empty
         .content_title='Top 20 Easy Games'
         .content_text
             if scores.easy
@@ -46,4 +47,4 @@ block content
                             td #{record.username}
                             td #{record.score}
             else
-                Empty
+                p Empty
