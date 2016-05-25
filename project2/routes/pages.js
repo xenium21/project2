@@ -54,8 +54,7 @@ module.exports.hiscore = function(req, res)
     {
         Scores.find(match, function(err, doc){
         	queries--;
-    		list[store] = doc;
-    		console.log(doc);
+        	if(doc.length > 0) list[store] = doc;
     		callback();
     	}).sort({score: -1}).limit(20);
     }
