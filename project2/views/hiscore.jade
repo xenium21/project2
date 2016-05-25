@@ -2,7 +2,27 @@ extends layout
 
 block content
     .content_section
-        .content_title='Top 20 Games'
+        .content_title='Top 20 Hard Games'
         .content_text
-            p.
-                TODO
+            script(type='text/javascript')
+                scores.hard.forEach(function(item, index)
+                {
+                    document.getElementById("hard").innerHTML = index + " " + game.username + " " + game.score + "<br />";
+                })
+            #hard
+        .content_title='Top 20 Medium Games'
+        .content_text
+            script(type='text/javascript')
+                scores.hard.forEach(function(item, index)
+                {
+                    document.getElementById("medium").innerHTML = index + " " + game.username + " " + game.score + "<br />";
+                })
+            #medium
+        .content_title='Top 20 Easy Games'
+        .content_text
+            script(type='text/javascript')
+                scores.easy.forEach(function(item, index)
+                {
+                    document.getElementById("easy").innerHTML = index + " " + game.username + " " + game.score + "<br />";
+                })
+            #easy

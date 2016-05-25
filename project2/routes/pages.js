@@ -47,41 +47,25 @@ module.exports.howto = function(req, res)
 
 module.exports.hiscore = function(req, res)
 {
-	/*var queries = 1;
+	var list = {hard: null, medium: null, easy: null};
+	var queries = 3;
 
 	function getCount( store, match, callback )
     {
-        Scores.count(match, function(err, count) {
-            queries--;
-            if(err) throw err;
-            if(count)
-            {
-                game[store] = count;
-            }
-            else
-            {
-                game[store] = 0;
-            }
-
-            callback();
-        });
+        Scores.find(match, function(err, doc){
+    		list[store] = doc;
+    		callback();
+    	}).sort({score: -1}).limit(20);
     }
 
     function attemptTransaction()
     {
-        if(queries == 0) res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date});
-    }*/
-
-    var list;
-
-    Scores.find({}, function(err, doc){
-    	list = doc;
-    	doc.forEach(function(doc)
-    	{
-    		console.log(JSON.stringify(doc));
-    	});
-    }).sort({score: -1}).limit(20);
-    res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date});
+        if(queries == 0) res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date, scores: list});
+    }
+    
+    getCount("hard", {difficulty: "Hard"}, attemptTransaction);
+    getCount("medium", {difficulty: "Medium"}, attemptTransaction);
+    getCount("easy", {difficulty: "Easy"}, attemptTransaction);
 }
 
 module.exports.elite = function(req, res)
