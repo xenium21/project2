@@ -53,6 +53,7 @@ module.exports.hiscore = function(req, res)
 	function getCount( store, match, callback )
     {
         Scores.find(match, function(err, doc){
+        	queries--;
     		list[store] = doc;
     		callback();
     	}).sort({score: -1}).limit(20);
