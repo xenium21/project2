@@ -81,7 +81,7 @@ module.exports.hiscore = function(req, res)
     		console.log(JSON.stringify(doc));
     	});
     }).sort({score: -1}).limit(20);
-    
+    res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date});
 }
 
 module.exports.elite = function(req, res)
