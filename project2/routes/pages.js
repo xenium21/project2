@@ -72,11 +72,16 @@ module.exports.hiscore = function(req, res)
         if(queries == 0) res.render('hiscore', {title: 'Global hiscores', user: req.user, date: date});
     }*/
 
-    var list = Scores.find();
-    list.forEach(function(doc)
+    var list;
+
+    Scores.find({}, function(err, doc){
+    	list = doc;
+    	doc.forEach(function(doc)
     	{
     		console.log(JSON.stringify(doc));
     	});
+    }).sort({score: -1}).limit(20);
+    
 }
 
 module.exports.elite = function(req, res)
