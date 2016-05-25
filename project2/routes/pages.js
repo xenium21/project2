@@ -5,6 +5,19 @@ module.exports.index = function(req, res)
   res.render('index', { title: 'Home', user: req.user, date: new Date() }) 
 }
 
+modules.exports.login = function(req, res) {
+    res.render('login', { title: 'Login', user : req.user, date: date });
+}
+
+modules.exports.logout = function(req, res) {
+    req.logout();
+    res.redirect('/');
+}
+
+modules.exports.register = function(req, res) {
+    res.render('register', { title: 'Registration', date: date });
+}
+
 module.exports.q3 = function(req, res)
 {
 	res.render('q3', {title: 'Quake III', user: req.user, date: date});

@@ -46,7 +46,7 @@ router.post( '/reactor', function(req, res) {
             res.send("Inserted");
         }
     });
-});
+} );
 
 /* How to play the game */
 router.get( '/howto', sitePages.howto );
@@ -70,11 +70,9 @@ router.get( '/valid', sitePages.valid );
 router.get( '/feedback', sitePages.feedback );
 
 // Account handler
-router.get('/register', function(req, res) {
-    res.render('register', { title: 'Registration', date: date });
-});
+router.get( '/register', sitePages.register );
 
-router.post('/register', function(req, res, next) {
+router.post( '/register', function(req, res, next) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
           return res.render('register', { error : err.message });
@@ -89,19 +87,14 @@ router.post('/register', function(req, res, next) {
             });
         });
     });
-});
+} );
 
-router.get('/login', function(req, res) {
-    res.render('login', { title: 'Login', user : req.user, date: date });
-});
+router.get( '/login', sitePages.login );
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post( '/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
-});
+} );
 
-router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-});
+router.get( '/logout', sitePages.logout );
 
 module.exports = router;
