@@ -73,10 +73,10 @@ module.exports.hiscore = function(req, res)
     }*/
 
     var list = Scores.find().sort({score: -1}).limit(20);
-    list.forEach(function(doc)
-    	{
-    		console.log(JSON.stringify(doc));
-    	});
+    while(list.hasNext())
+	{
+		console.log(JSON.stringify(cursor.next()));
+	};
 }
 
 module.exports.elite = function(req, res)
