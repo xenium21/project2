@@ -6,20 +6,20 @@ block content
         .content_text
             ul
                 for record, i in scores.hard
-                    li #{i} + " " + #{record.username} + " " + #{record.score} + "<br />"
+                    li #{i} #{record.username} #{record.score} <br />
                 else
                     li Empty
         .content_title='Top 20 Medium Games'
         .content_text
             ul
                 for record, i in scores.medium
-                    li #{i} + " " + #{record.username} + " " + #{record.score} + "<br />"
+                    li #{i} #{record.username} #{record.score} <br />
                 else
                     li Empty
         .content_title='Top 20 Easy Games'
         .content_text
             ul
                 for record, i in scores.easy
-                    li #{i} + " " + #{record.username} + " " + #{record.score} + "<br />"
+                    li #{i} #{record.username} #{record.score} <br />
                 else
                     li Empty
