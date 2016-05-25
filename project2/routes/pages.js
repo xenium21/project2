@@ -1,5 +1,7 @@
 var date = new Date();
 
+var Scores = require('../models/scores');
+
 module.exports.index = function(req, res)
 {
   res.render('index', { title: 'Home', user: req.user, date: new Date() }) 
