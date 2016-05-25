@@ -4,8 +4,7 @@ block content
     .content_section
         .content_title='Top 20 Hard Games'
         .content_text
-            p #{scores.hard}
-            if scores.hard
+            if scores.hard != null
                 table
                     tr
                         th Position
@@ -20,7 +19,7 @@ block content
                 p Empty
         .content_title='Top 20 Medium Games'
         .content_text
-            if scores.medium
+            if scores.medium != null
                 table
                     tr
                         th Position
@@ -35,7 +34,7 @@ block content
                 p Empty
         .content_title='Top 20 Easy Games'
         .content_text
-            if scores.easy
+            if scores.easy != null
                 table
                     tr
                         th Position
