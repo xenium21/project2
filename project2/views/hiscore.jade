@@ -4,25 +4,22 @@ block content
     .content_section
         .content_title='Top 20 Hard Games'
         .content_text
-            script(type='text/javascript')
-                scores.hard.forEach(function(item, index)
-                {
-                    document.getElementById("hard").innerHTML = index + " " + game.username + " " + game.score + "<br />";
-                })
-            #hard
+            ul
+                for record, i in game.hard
+                    li #{i} + " " + #{record.username} + " " + #{record.score} + "<br />"
+                else
+                    li Empty
         .content_title='Top 20 Medium Games'
         .content_text
-            script(type='text/javascript')
-                scores.hard.forEach(function(item, index)
-                {
-                    document.getElementById("medium").innerHTML = index + " " + game.username + " " + game.score + "<br />";
-                })
-            #medium
+            ul
+                for record, i in game.medium
+                    li #{i} + " " + #{record.username} + " " + #{record.score} + "<br />"
+                else
+                    li Empty
         .content_title='Top 20 Easy Games'
         .content_text
-            script(type='text/javascript')
-                scores.easy.forEach(function(item, index)
-                {
-                    document.getElementById("easy").innerHTML = index + " " + game.username + " " + game.score + "<br />";
-                })
-            #easy
+            ul
+                for record, i in game.easy
+                    li #{i} + " " + #{record.username} + " " + #{record.score} + "<br />"
+                else
+                    li Empty
