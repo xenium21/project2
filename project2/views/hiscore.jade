@@ -4,11 +4,12 @@ block content
     .content_section
         .content_title='Top 20 Hard Games'
         .content_text
-            ul
+            table
                 for record, i in scores.hard
-                    li #{i} #{record.username} #{record.score} <br />
-                else
-                    li Empty
+                    tr
+                        td #{i}
+                        td #{record.username}
+                        td #{record.score}
         .content_title='Top 20 Medium Games'
         .content_text
             ul
