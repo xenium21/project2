@@ -1,3 +1,5 @@
+var date = new Date();
+
 module.exports.q3 = function(req, res)
 {
 	res.render('q3', {title: 'Quake III', user: req.user, date: date});

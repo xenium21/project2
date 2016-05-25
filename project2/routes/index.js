@@ -9,8 +9,6 @@ var router = express.Router();
 
 var sitePages = require('../routes/pages');
 
-var date = new Date();
-
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Home', user: req.user, date: date });
@@ -84,7 +82,7 @@ router.get( '/elite', function(req, res)
 
     function attemptTransaction()
     {
-        if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game, date: date});
+        if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game, date: new Date()});
     }
 
     getCount("played", {username: req.user._id}, attemptTransaction);
