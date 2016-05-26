@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
 
-// Login Database
+// Comment database
 var comment = 'mongodb://localhost/comment';
 
-//mongoose.connect(login);
 module.exports = commentDb = mongoose.createConnection(comment);
 
 commentDb.on('connected', function()

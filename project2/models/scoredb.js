@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
 
-// Login Database
+// Score Database
 var score = 'mongodb://localhost/scores';
 
-//mongoose.connect(login);
 module.exports = scoreDb = mongoose.createConnection(score);
 
 scoreDb.on('connected', function()
