@@ -98,10 +98,10 @@ module.exports.elite = function(req, res)
         if(queries == 0) res.render('elite', {title: 'Elite corner', user: req.user, games: game, date: new Date()});
     }
 
-    getCount("played", {username: req.user._id}, attemptTransaction);
-    getCount("hard", {username: req.user._id, difficulty: "Hard"}, attemptTransaction);
-    getCount("medium", {username: req.user._id, difficulty: "Medium"}, attemptTransaction);
-    getCount("easy", {username: req.user._id, difficulty: "Easy"}, attemptTransaction);
+    getCount("played", {username: req.user.username}, attemptTransaction);
+    getCount("hard", {username: req.user.username, difficulty: "Hard"}, attemptTransaction);
+    getCount("medium", {username: req.user.username, difficulty: "Medium"}, attemptTransaction);
+    getCount("easy", {username: req.user.username, difficulty: "Easy"}, attemptTransaction);
 }
 
 module.exports.about = function(req, res)
