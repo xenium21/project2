@@ -2,7 +2,22 @@ extends layout
 
 block content
     .content_section
-        .content_title='Feedback'
+        if user
+            .content_title='Leave feedback'
+            .content_text
+                form(role='form', action='/feedback', method='post')
+                    .form-group
+                        input.form-control(type='text', name='comment', placeholder='Enter comment here', maxlength='100')
+                    button.btn.btn-default(type='submit') Submit
+                a(href='/')
+                    button.btn.btn-primary(type="button") Cancel
+    .content_section
+        .content_title='User feedback'
         .content_text
-            p.
-                TODO
+            if comments
+                for comment, i in comments
+                    p.
+                        #{i} #{comment.username} <br />
+                        #{comment.comment}
+            else
+                p No comments yet

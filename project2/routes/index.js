@@ -37,16 +37,17 @@ router.post( '/reactor', function(req, res) {
         "username": name,
         "difficulty": diff,
         "score": score
-    }).save(function(err, doc) {
-        if(err)
+    }).save(function(err, doc)
         {
-            res.json(err);
-        }
-        else 
-        {
-            res.send("Inserted");
-        }
-    });
+            if(err)
+            {
+                res.json(err);
+            }
+            else 
+            {
+                res.send("Inserted");
+            }
+        });
 } );
 
 /* How to play the game */
@@ -70,10 +71,28 @@ router.get( '/valid', sitePages.valid );
 /* Feedback */
 router.get( '/feedback', sitePages.feedback );
 
-/*router.post( '/feedback', function(req, res)
+router.post( '/feedback', function(req, res)
 {
+    var name = req.user.username;
+    var comment = req.body.comment;
 
-} );*/
+    // Check if the comment limit has been reached
+
+    new Comment({
+        "username": name,
+        "comment": comment
+    }).save(function(err, doc)
+        {
+            if(err)
+            {
+                res.json(err);
+            }
+            else 
+            {
+                res.send("Inserted");
+            }
+        });
+} );
 
 // Account handler
 router.get( '/register', sitePages.register );
