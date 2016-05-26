@@ -7,7 +7,7 @@ var circle;
 var globalTimer;
 var clock;
 var score;
-var userId = $('#user').data('config');
+//var userId = $('#user').data('config');
 
 // Options
 var timeSelect = 10;    // in s
