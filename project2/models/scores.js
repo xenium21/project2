@@ -9,4 +9,4 @@ var Scores = new Schema({
     score: Number
 });
 
-module.exports = scoreDb.model('Scores', Scores);
+module.exports = scoreDb.model('Score', Score);

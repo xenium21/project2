@@ -1,6 +1,7 @@
 var date = new Date();
 
-var Scores = require('../models/scores');
+var Score = require('../models/scores');
+var Comment = require('../models/comments');
 
 module.exports.index = function(req, res)
 {
@@ -52,7 +53,7 @@ module.exports.hiscore = function(req, res)
 
 	function getCount( store, match, callback )
     {
-        Scores.find(match, function(err, doc){
+        Score.find(match, function(err, doc){
         	queries--;
         	if(doc.length > 0) list[store] = doc;
     		callback();
@@ -76,7 +77,7 @@ module.exports.elite = function(req, res)
 
     function getCount( store, match, callback )
     {
-        Scores.count(match, function(err, count) {
+        Score.count(match, function(err, count) {
             queries--;
             if(err) throw err;
             if(count)

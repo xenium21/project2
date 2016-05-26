@@ -3,7 +3,8 @@ var express = require('express');
 // Login info.
 var passport = require('passport');
 var Account = require('../models/account');
-var Scores = require('../models/scores');
+var Score = require('../models/scores');
+var Comment = require('../models/comments');
 
 var router = express.Router();
 
@@ -32,7 +33,7 @@ router.post( '/reactor', function(req, res) {
     var score = Number(req.body.score);
     console.log("Got " + name + " " + diff + " " + score);
 
-    new Scores({
+    new Score({
         "username": name,
         "difficulty": diff,
         "score": score
@@ -68,6 +69,11 @@ router.get( '/valid', sitePages.valid );
 
 /* Feedback */
 router.get( '/feedback', sitePages.feedback );
+
+/*router.post( '/feedback', function(req, res)
+{
+
+} );*/
 
 // Account handler
 router.get( '/register', sitePages.register );
