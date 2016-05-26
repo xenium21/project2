@@ -21,4 +21,4 @@ commentDb.on('disconnected', function()
 		console.log('Disconnected from comment DBMS');
 	});
 
-require('./comment');
+require('./comments');
