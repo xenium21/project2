@@ -121,7 +121,7 @@ module.exports.valid = function(req, res)
 
 module.exports.feedback = function(req, res)
 {
-	Comment.find({}}, function(err, doc){
+	Comment.find({}, function(err, doc){
 			if( doc.length > 0 )
 			{
 				res.render('feedback', {title: 'Feedback', user: req.user, date: date, comments: doc});
