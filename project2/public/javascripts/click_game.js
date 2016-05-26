@@ -109,7 +109,6 @@ function runMenuSubmit()
 			type: 'POST',
 			url: '/reactor',
 			data: {
-				name: userId,
 				difficulty: difficulty,
 				score: score
 			},
