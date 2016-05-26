@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'), commentDb = require('./commentdb');
 var Schema = mongoose.Schema;
 
-var Comments = new Schema({
+var Comment = new Schema({
     username: String,
     comment: String
 });
