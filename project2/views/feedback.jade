@@ -15,9 +15,9 @@ block content
         .content_title='User feedback'
         .content_text
             if comments
-                for comment, i in comments
+                for comment in comments
                     p.
-                        #{i} #{comment.username} <br />
+                        User: #{comment.username} says <br />
                         #{comment.comment}
             else
                 p No comments yet
