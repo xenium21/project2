@@ -87,10 +87,6 @@ router.post( '/feedback', function(req, res)
             {
                 res.json(err);
             }
-            else 
-            {
-                res.send("Inserted");
-            }
         });
 } );
 
