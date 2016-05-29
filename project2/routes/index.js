@@ -31,7 +31,6 @@ router.post( '/reactor', function(req, res) {
     var name = req.user.username;
     var diff = req.body.difficulty;
     var score = Number(req.body.score);
-    //console.log("Got " + name + " " + diff + " " + score);
 
     new Score({
         "username": name,

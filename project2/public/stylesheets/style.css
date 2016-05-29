@@ -115,6 +115,11 @@ footer {
 .footer_info {
     font-size: 10px;
 }
+.feedback {
+    font-style: italic;
+    font-size: 18;
+    font-family: serif;
+}
 #game {
     padding: 5px;
     border: 1px solid black;

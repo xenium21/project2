@@ -7,17 +7,18 @@ block content
             .content_text
                 form(role='form', action='/feedback', method='post')
                     .form-group
-                        input.form-control(type='text', name='comment', placeholder='Enter comment here', maxlength='100')
+                        input.form-control(type='text', name='comment', placeholder='Enter comment here', maxlength='100', style='font-size:18pt;height:420px;width:200px')
                     button.btn.btn-default(type='submit') Submit
                 a(href='/feedback')
                     button.btn.btn-primary(type="button") Cancel
     .content_section
         .content_title='User feedback'
         .content_text
-            if comments
-                for comment in comments
-                    p.
-                        User: #{comment.username} says <br />
-                        #{comment.comment}
-            else
-                p No comments yet
+            .feedback
+                if comments
+                    for comment in comments
+                        p.
+                            User: #{comment.username} says <br />
+                            #{comment.comment}
+                else
+                    p No comments yet
