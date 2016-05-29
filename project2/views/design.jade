@@ -8,26 +8,26 @@ block content
                 TODO
         .content_title='Architecture'
         .content_text
-        	p.
-        		User Sessions - User sessions are handled by PassportJS and allow the session to be saved when the user has successfully logged in. This session in the
-        		form of a JS object named 'user' allows the user information to be used throughout the site. An example of this is a bit of text at the top of the scree
-        		that contains the current user logged in. This is achieved by the Node.JS router passing the user object to Jade to use.
+            p.
+                User Sessions - User sessions are handled by PassportJS and allow the session to be saved when the user has successfully logged in. This session in the
+                form of a JS object named 'user' allows the user information to be used throughout the site. An example of this is a bit of text at the top of the scree
+                that contains the current user logged in. This is achieved by the Node.JS router passing the user object to Jade to use.
             p.
                 MongoDB databases:
             p.
-            	Passport Login System - This is a special database that contains the login information of users that have registered on the website.
-            	It does not store the passwords inside the database, but instead uses a salt and hash system to store the password for a user account
-            	cryptographically. This ensures that if the database is compromised, the passwords are never stored in a string format.
+                Passport Login System - This is a special database that contains the login information of users that have registered on the website.
+                It does not store the passwords inside the database, but instead uses a salt and hash system to store the password for a user account
+                cryptographically. This ensures that if the database is compromised, the passwords are never stored in a string format.
 
-           	p.
-           		Score Logger - This database provides the game 'Reactor' the ability to POST scores from a given game to be able to store. Every game that is played
-           		when a user is logged in, it will log the score, difficulty and the users ID. This system is used to pull record information on the players profile in
-           		the 'Elite Corner', as well as allowing a highscore list to be compiled on the 'Hiscores' page.
+            p.
+                Score Logger - This database provides the game 'Reactor' the ability to POST scores from a given game to be able to store. Every game that is played
+                when a user is logged in, it will log the score, difficulty and the users ID. This system is used to pull record information on the players profile in
+                the 'Elite Corner', as well as allowing a highscore list to be compiled on the 'Hiscores' page.
 
-           	p.
-           		Feedback System - The feedback for the page 'Feedback' stores JSON data passed to it via a POST to log the users comment if they are logged in. This allows it
-           		to store the comment and the user who made the comment in a database that can be queried. The site only utilizes this by pulling the last 10 comments left by the
-           		users.
+            p.
+                Feedback System - The feedback for the page 'Feedback' stores JSON data passed to it via a POST to log the users comment if they are logged in. This allows it
+                to store the comment and the user who made the comment in a database that can be queried. The site only utilizes this by pulling the last 10 comments left by the
+                users.
         .content_title='Problems'
         .content_text
             p.
