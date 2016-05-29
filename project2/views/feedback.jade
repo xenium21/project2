@@ -7,10 +7,10 @@ block content
             .content_text
                 form(role='form', action='/feedback', method='post')
                     .form-group
-                        input.form-control(type='text', name='comment', placeholder='Enter comment here', maxlength='100', style='font-size:18pt;height:200px;width:300px')
+                        input.form-control(type='text', name='comment', placeholder='Enter comment here', maxlength='100', style='font-size:12pt;height:100px;width:250px')
                     button.btn.btn-default(type='submit') Submit
-                a(href='/feedback')
-                    button.btn.btn-primary(type="button") Cancel
+                    a(href='/feedback')
+                        button.btn.btn-primary(type="button") Cancel
     .content_section
         .content_title='User feedback'
         .content_text
