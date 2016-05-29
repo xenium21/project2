@@ -124,7 +124,7 @@ function runMenuSubmit()
 				console.log(thrownError);
 			},
 			complete: function() {
-				screen.removeElement( this );
+				screen.removeElement( submit );
 			}
 		});
 	});
