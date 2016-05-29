@@ -122,7 +122,7 @@ function runMenuSubmit()
 				console.log(xhr.status);
 				console.log(xhr.responseText);
 				console.log(thrownError);
-			}
+			},
 			complete: function() {
 				screen.removeElement( this );
 			}
