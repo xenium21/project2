@@ -116,6 +116,7 @@ footer {
     font-size: 10px;
 }
 .feedback {
+    width: auto;
     font-style: italic;
     font-size: 18;
     font-family: serif;
