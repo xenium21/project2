@@ -75,8 +75,6 @@ router.post( '/feedback', function(req, res)
     var name = req.user.username;
     var comment = req.body.comment;
 
-    // Check if the comment limit has been reached
-
     new Comment({
         "username": name,
         "comment": comment
