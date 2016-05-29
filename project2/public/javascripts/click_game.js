@@ -85,6 +85,8 @@ function addMenuButton(x, y, text, font, hAnchor, func)
 	if(hAnchor) button.setHorizontalAnchor(hAnchor);
 
 	if(func) button.addClickListener(func);
+
+	return button;
 }
 
 // Start playing
@@ -104,7 +106,8 @@ function playGame()
 // Draw a menu on screen
 function runMenuSubmit()
 {
-	addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, function(){
+	var submit = addMenuButton(screenX/2, 300, "Submit", 20, jsgl.HorizontalAnchor.CENTER, null);
+	submit.addClickListener(function(){
 		$.ajax({
 			type: 'POST',
 			url: '/reactor',
@@ -120,7 +123,10 @@ function runMenuSubmit()
 				console.log(xhr.responseText);
 				console.log(thrownError);
 			}
-		})
+			complete: function() {
+				screen.removeElement( this );
+			}
+		});
 	});
 	addMenuButton(screenX/2, 350, "Easy", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 20; radius = 40; difficulty = "Easy"; playGame();});
 	addMenuButton(screenX/2, 400, "Medium", 20, jsgl.HorizontalAnchor.CENTER, function(){timeSelect = 10; radius = 30; difficulty = "Medium"; playGame();});
