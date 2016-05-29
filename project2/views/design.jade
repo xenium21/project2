@@ -5,7 +5,18 @@ block content
         .content_title='Site design'
         .content_text
             p.
-                TODO
+                Registration - The user can register a new account via the 'Register' button near the top-left of the site. This will register a new account to be able
+                to access the rest of the website.
+            p.
+                Login - The login page allows a user to log into a new session on the website. It will display their username in the top-left of the site, and will
+                allow them to submit highscores, leave feedback as well as use their profile.
+            p.
+                Dynamic User profile - The currently logged in user can view their profile by accessing the 'Elite Corner' link in the navigation bar. This will
+                display the users information in the database, as well as the number of games they have played and the number of games for each difficulty.
+            p.
+                Hiscores - These are logged via logged in users hitting 'submit' when they finish a game. It will display the top 10 scores for each difficulty.
+            p.
+                Feedback - A user can leave some feedback by submitting the form on the 'feedback' section of the site.
         .content_title='Architecture'
         .content_text
             p.
@@ -28,7 +39,15 @@ block content
                 Feedback System - The feedback for the page 'Feedback' stores JSON data passed to it via a POST to log the users comment if they are logged in. This allows it
                 to store the comment and the user who made the comment in a database that can be queried. The site only utilizes this by pulling the last 10 comments left by the
                 users.
+            p.
+                Asynchronous I/O - MongoDB's queries utilised asynchronous I/O to be able to not block on a single users query. This was overcome by using the callback upon completion that every query supported, and this called a function to check if all queries were met before finishing the transaction.
         .content_title='Problems'
         .content_text
             p.
-                TODO
+                Security - Most user data is sent freely around, as well as the POSTing of data to the server. Whilst it was not the obvious intent of the project, some very
+                obvious security problems and situations are obvious.
+            p.
+                Database utilisation - The databases are used quite sparsly, and not as efficiently as what I intended. For example, the feedback database just stores a JSON object
+                with the username and comment, and the last 10 are dumped onto the 'feedback' page. Culling old comments may be better, but the queries in MongoDB are quite obtuse.
+            p.
+                Asynchronous MongoDB queries - Not only are MongoDB's query format extremely frustrating, but they are also asynchronous - which is the logical choice for a web server that caters to many clients. Multiple queries required the function to require a wait in the form of a callback when a query was completed.
