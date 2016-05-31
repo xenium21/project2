@@ -130,5 +130,5 @@ module.exports.feedback = function(req, res)
     		{
     			res.render('feedback', {title: 'Feedback', user: req.user, date: date, comments: null});
     		}
-    	}).limit(20);
+    	}).sort({_id: -1}).limit(10);
 }
