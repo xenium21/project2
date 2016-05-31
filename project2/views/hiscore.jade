@@ -5,45 +5,48 @@ block content
         .content_title='Top 20 Hard Games'
         .content_text
             if scores.hard
-                table
-                    tr
-                        th Position
-                        th UserID
-                        th Score
-                    for record, i in scores.hard
+                .hiscore
+                    table
                         tr
-                            td #{i}
-                            td #{record.username}
-                            td #{record.score}
+                            th Position
+                            th UserID
+                            th Score
+                        for record, i in scores.hard
+                            tr
+                                td #{i}
+                                td #{record.username}
+                                td #{record.score}
             else
                 p Empty
         .content_title='Top 20 Medium Games'
         .content_text
             if scores.medium
-                table
-                    tr
-                        th Position
-                        th UserID
-                        th Score
-                    for record, i in scores.medium
+                .hiscore
+                    table
                         tr
-                            td #{i}
-                            td #{record.username}
-                            td #{record.score}
+                            th Position
+                            th UserID
+                            th Score
+                        for record, i in scores.medium
+                            tr
+                                td #{i}
+                                td #{record.username}
+                                td #{record.score}
             else
                 p Empty
         .content_title='Top 20 Easy Games'
         .content_text
             if scores.easy
-                table
-                    tr
-                        th Position
-                        th UserID
-                        th Score
-                    for record, i in scores.easy
+                .hiscore
+                    table
                         tr
-                            td #{i}
-                            td #{record.username}
-                            td #{record.score}
+                            th Position
+                            th UserID
+                            th Score
+                        for record, i in scores.easy
+                            tr
+                                td #{i}
+                                td #{record.username}
+                                td #{record.score}
             else
                 p Empty

@@ -115,6 +115,20 @@ footer {
 .footer_info {
     font-size: 10px;
 }
+.hiscore.table {
+    width: 100%;
+}
+.hiscore.td {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.hiscore.th {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.hiscore.tr:hover {
+    background-color: #f5f5f5;
+}
 .feedback {
     padding: 10px;
     width: 250px;
