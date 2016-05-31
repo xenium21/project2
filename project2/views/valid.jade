@@ -2,7 +2,24 @@ extends layout
 
 block content
     .content_section
-        .content_title='Validation strategies'
+    	.content_title='Login errors'
         .content_text
             p.
-                TODO
+                Both the registration and login pages have failsafes supported by PassportJS, that prevent certain situation from
+                occuring. Registration reload the page when the incorrect information has been entered, so the user can retry. The login
+                page will redirect the user to the home page on success, but if incorrent information is entered, they are sent to
+                an unauthorized page.
+        .content_title='MongoDB errors'
+        .content_text
+            p.
+                MongoDB queries are asynchronous, which means that a set of queries will all execute and if you have not accounted for this,
+                then any following element that uses the result of the transactions will usually be empty. Callbacks upon a transactions
+                completion are used to inform the system a query is complete, and to try executing a black that requires the data.
+        .content_title='GET/POST errors'
+        .content_text
+            p.
+                Utilization of the express router and its error reporting functionality allow any problem in a GET or POST to send an error code
+                back, and the functions that receive will go into their error handlers to dump the error. It is key to make sure that a stack trace
+                is not leaked back to the user, as it contains critical information about the system that runs the site. Upon an error, it may send 
+                an Error 500 packet back which will display on the page or console. Success on a POST will be displayed on the console on the end
+                that sent it.
